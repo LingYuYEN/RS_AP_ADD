@@ -1,0 +1,10 @@
+body {
+    background: lightblue;
+}
+.warp {
+    width:100%;
+    max-width: 1000px;
+    white-space:normal;
+    word-wrap:break-word;
+    word-break:break-all;
+}

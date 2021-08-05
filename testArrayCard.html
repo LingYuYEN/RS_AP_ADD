@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body class="text-center">
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+    <div class="container" style="color: white">
+        <!--        <h2 class="">109 年前瞻智慧網路</h2>-->
+        <h1 class="">慈暉電腦報修系統</h1>
+    </div>
+</div>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="card-deck col-3" id="">-->
+<!--            <div class="card shadow p-3 mb-5 bg-white rounded">-->
+<!--                <img src="https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">109 年度前瞻智慧網路</h5>-->
+<!--                </div>-->
+<!--                <a href="#" class="btn btn-primary">立即前往</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
+
+<script>
+    // let cardDataArr = [
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第一個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第二個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第三個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第4個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第5個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第6個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第7個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第8個 card"],
+    // ]
+
+    let urlStr = 'http://163.24.164.230:5000/users/屏東市'
+
+    let div_container = document.createElement('div')
+    div_container.classList.add('container')
+
+    let row = document.createElement('div')
+    row.classList.add('row', 'justify-content-center')
+
+    let jqxhr = $.getJSON( urlStr, function(dataArr) {
+        console.log( "success" );
+
+        // console.log(dataArr[0])
+        dataArr.forEach(function (data) {
+
+            let div_card_deck = document.createElement('div')
+            div_card_deck.classList.add('card-deck', 'col-sm-6', 'col-md-4', 'col-lg-3')
+
+            let card = document.createElement('div');
+            card.classList.add("card", "shadow", "p-3", "mb-5", "bg-white", "rounded", "d-flex", "justify-content-center")
+
+            // console.log(cardData[1])
+
+            let carDiv = document.createElement('div')
+            carDiv.classList.add('position-relative')
+            carDiv.style.width = '150px'
+            carDiv.style.height = '200px'
+
+            let carImg = document.createElement('img')
+            carImg.src = data['image']
+            carImg.classList.add('card-img-top', 'position-absolute')
+            carImg.style.maxHeight = '100%'
+            carImg.style.maxWidth = '100%'
+            carImg.style.width = 'auto'
+            carImg.style.height = 'auto'
+            carImg.style.margin = 'auto'
+            carImg.style.top = '0'
+            carImg.style.bottom = '0'
+            carImg.style.left = '0'
+            carImg.style.right = '0'
+
+
+            let div_card_body = document.createElement('div')
+            div_card_body.classList.add('card-body', 'pl-0', 'pr-0')
+
+            let h5 = document.createElement('h5')
+            h5.classList.add('card-title')
+            h5.innerHTML = data['name']
+
+            let a_link = document.createElement('a')
+            a_link.href = '#'
+            a_link.classList.add('btn', 'btn-primary')
+            a_link.innerHTML = '立即前往'
+
+            // console.log(cardDataArr.length);
+
+            carDiv.appendChild(carImg)
+            card.appendChild(carDiv)
+            card.appendChild(div_card_body)
+            div_card_body.appendChild(h5)
+            card.appendChild(a_link)
+
+            div_card_deck.appendChild(card)
+            row.appendChild(div_card_deck)
+            div_container.appendChild(row)
+            document.body.appendChild(div_container)
+        })
+    })
+        .done(function() {
+            console.log( "second success" );
+        })
+        .fail(function() {
+            console.log( "error" );
+        })
+        .always(function() {
+            console.log( "complete" );
+        });
+
+    // Perform other work here ...
+
+    // Set another completion function for the request above
+    // 為上述請求設置另一個完成功能
+    jqxhr.always(function() {
+        console.log( "second complete" );
+    });
+
+
+    // function createCard(cardDataArr) {
+    //     // 第一圈處理
+    //     // [
+    //     //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第一個 card"],
+    //     //     ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第二個 card"]
+    //     // ]
+    //
+    //     console.log(cardDataArr)
+    //
+    //
+    //     // let arrIndex = 1
+    //
+    //     cardDataArr.forEach(function(cardData) {
+    //         // 第二圈處理
+    //         // ["https://i2.wp.com/d.lanrentuku.com/down/png/1209/heroes_villains/spideman.png", "第一個 card"]
+    //
+    //             let div_card_deck = document.createElement('div')
+    //             div_card_deck.classList.add('card-deck', 'col-sm-6', 'col-md-4', 'col-lg-3')
+    //
+    //             let card = document.createElement('div');
+    //             card.classList.add("card", "shadow", "p-3", "mb-5", "bg-white", "rounded")
+    //
+    //             // console.log(cardData[1])
+    //
+    //             let carImg = document.createElement('img')
+    //             carImg.src = data['image']
+    //             carImg.classList.add("card-img-top")
+    //
+    //             let div_card_body = document.createElement('div')
+    //             div_card_body.classList.add('card-body')
+    //
+    //             let h5 = document.createElement('h5')
+    //             h5.classList.add('card-title')
+    //             h5.innerHTML = data['name']
+    //
+    //             let a_link = document.createElement('a')
+    //             a_link.href = '#'
+    //             a_link.classList.add('btn', 'btn-primary')
+    //             a_link.innerHTML = '立即前往'
+    //
+    //             // console.log(cardDataArr.length);
+    //
+    //             card.appendChild(carImg)
+    //             card.appendChild(div_card_body)
+    //             div_card_body.appendChild(h5)
+    //             card.appendChild(a_link)
+    //
+    //             div_card_deck.appendChild(card)
+    //             row.appendChild(div_card_deck)
+    //             div_container.appendChild(row)
+    //             document.body.appendChild(div_container)
+    //
+    //     });
+    // }
+    //
+    // createCard(cardDataArr);
+
+
+</script>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">項次</th>
+        <th scope="col">學校</th>
+        <th scope="col">申告人</th>
+        <th scope="col">聯電</th>
+        <th scope="col">設備類型</th>
+        <th scope="col">障礙描述</th>
+        <th scope="col">申告時間</th>
+    </tr>
+    </thead>
+    <tbody id="test_id">
+        <tr>
+            <th>1</th>
+            <td>school</td>
+        </tr>
+    </tbody>
+</table>
+<script>
+
+</script>
+<script>
+
+    let tbody = document.getElementById('test_id')
+    let tr = document.createElement('tr')
+    let th = document.createElement('th')
+    let td1 = document.createElement('td')
+    let td2 = document.createElement('td')
+    let td3 = document.createElement('td')
+    let td4 = document.createElement('td')
+    let td5 = document.createElement('td')
+    let td6 = document.createElement('td')
+
+    th.innerHTML = '1'
+    td1.innerHTML = 'school'
+    td2.innerHTML = 'school'
+    td3.innerHTML = 'school'
+    td4.innerHTML = 'school'
+    td5.innerHTML = 'school'
+    td6.innerHTML = 'school'
+
+    tbody.appendChild(tr)
+    tr.appendChild(th)
+    tr.appendChild(td1)
+    tr.appendChild(td2)
+    tr.appendChild(td3)
+    tr.appendChild(td4)
+    tr.appendChild(td5)
+    tr.appendChild(td6)
+
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+</html>

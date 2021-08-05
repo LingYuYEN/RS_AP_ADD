@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<input type="text" class="form-control" id="inputTest" placeholder="請輸入聯絡人" aria-label="" aria-describedby="" value="asdfsdf">
+
+<div id="parent"></div>
+　
+<script>
+    let obj = {
+        school: "XX國小",
+        name: "Louis",
+        tel: "0926000000",
+        device_type: "交換器",
+        repair_description: "無法上網",
+        repair_time: "2021-07-14"
+    };
+    let json = JSON.stringify(obj)
+    $.ajax({
+        type: 'POST',
+        url: 'http://163.24.164.230:5000/repair_info',
+        data: json,
+        success: console.log('success'),
+        dataType: 'json'
+    })
+</script>
+<!--<script>-->
+
+<!--    let dt = new Date()-->
+<!--    // console.log(Date.now())-->
+
+<!--    console.log(dt.getUTCFullYear())-->
+<!--    console.log(dt.getMonth())-->
+<!--    console.log(dt.getDate())-->
+<!--    console.log(dt.getHours())-->
+<!--    console.log(dt.getMinutes())-->
+<!--    // dt.getDate()-->
+<!--    // dt.getHours()-->
+<!--    // dt.getMinutes()-->
+
+
+<!--    let input = document.getElementById('inputTest')-->
+<!--    console.log(input.value)-->
+
+
+<!--    function addElementDiv(obj) {-->
+<!--        let parent = document.getElementById(obj);-->
+<!--        //新增 div-->
+<!--        let div = document.createElement("div");-->
+<!--        //設定 div 屬性，如 id-->
+<!--        div.setAttribute("id", "newDiv");-->
+<!--        div.innerHTML = "js 動態新增div";-->
+<!--        parent.appendChild(div);-->
+<!--    }-->
+<!--    addElementDiv('parent')-->
+<!--</script>-->
+　　
+
+<script>
+    let urlStr = 'http://163.24.164.230:5000/items'
+
+    let jqxhr = $.getJSON( urlStr, function(dataArr) {
+        console.log( "success" );
+        // console.log(dataArr[0])
+        dataArr.forEach(function (data) {
+            let img = document.createElement('img')
+            img.src = data['image']
+
+            let p = document.createElement('p')
+            p.innerHTML = data['name']
+
+            document.body.appendChild(img)
+            document.body.appendChild(p)
+            console.log(data['id'])
+            console.log(data['image'])
+            console.log(data['name'])
+        })
+    })
+        .done(function() {
+            console.log( "second success" );
+        })
+        .fail(function() {
+            console.log( "error" );
+        })
+        .always(function() {
+            console.log( "complete" );
+        });
+
+    // Perform other work here ...
+
+    // Set another completion function for the request above
+    // 為上述請求設置另一個完成功能
+    jqxhr.always(function() {
+        console.log( "second complete" );
+    });
+
+
+
+
+</script>
+</body>
+</html>

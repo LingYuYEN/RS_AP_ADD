@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>報修系統</title>
+    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="signin.js"></script>
+<!--    <script type="text/javascript" src="repairInput.js"></script>-->
+</head>
+<body class="d-block">
+<div class="jumbotron jumbotron-fluid text-center" style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+    <div class="container" style="color: white">
+
+        <h1 class="mb-5">屏東縣政府</h1>
+        <h2>110年度補助本縣國中小</h2>
+        <h2>電腦教室資訊設備更新採購案</h2>
+    </div>
+</div>
+
+<div class="row m-0">
+    <div class="col-3">
+    </div>
+    <form class="col-6 text-center">
+        <img class="mb-4" src="images/swell_logo.png" alt="" width="145" height="209">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputAccount" class="sr-only">Email address</label>
+        <input type="text" id="inputAccount" class="form-control form-ctrl" autocomplete="off" placeholder="請輸入帳號" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control form-ctrl" autocomplete="off" placeholder="請輸入密碼" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button id="signin_btn" class="btn btn-lg btn-primary btn-block form-ctrl" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020-2021 慈暉電腦有限公司</p>
+    </form>
+    <div class="col-3 text-right m-auto">
+        <div class="dropdown mb-3">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="driverMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                驅動程式下載(6)
+            </a>
+            <div class="dropdown-menu" aria-labelledby="driverMenuLink">
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Driver/AMT/AMT_Intel_2031.15.0.1743_W10x64_A.zip?acerid=637471585328986120&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">Intel AMT Driver</a>
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Driver/Audio/Audio_Realtek_6.0.8947.1_W10x64_A.zip?acerid=637366216655294989&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">Audio Driver</a>
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Driver/Audio%20Utility/Audio%20Utility_Realtek_1.11.217.0_W10x64_A.zip?acerid=637366217251254152&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">Audio Utility</a>
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Driver/Chipset/Chipset_Intel_10.1.18295.8201_W10x64_A.zip?acerid=637366236266135045&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">Chipset Driver</a>
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Driver/Lan/Lan_Realtek_10.038.1118.2019_W10x64_A.zip?acerid=637366236544472826&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">LAN Driver</a>
+            </div>
+        </div>
+        <div class="dropdown mb-3">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="userManualLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                文件下載(1)
+            </a>
+            <div class="dropdown-menu" aria-labelledby="userManualLink">
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Document/User%20Manual/User%20Manual_Acer_1.0_A_A.pdf?acerid=637316025843749541&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">User Manual</a>
+            </div>
+        </div>
+        <div class="dropdown mb-3">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="appLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                應用程式(1)
+            </a>
+            <div class="dropdown-menu" aria-labelledby="appLink">
+                <a class="dropdown-item" href="https://global-download.acer.com/GDFiles/Application/Acer%20Control%20Center/Acer%20Control%20Center_Acer_4.00.3019_W10x64_A.zip?acerid=637471540981733016&Step1=DESKTOP&Step2=VERITON&Step3=VERITON%20S2670G&OS=ALL&LC=zh-cht&BC=ACER&SC=TWN_1">Acer Control Center</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--class="form-signin"-->
+<!--<form class="form-signin">-->
+<!--    <img class="mb-4" src="images/swell_logo.png" alt="" width="145" height="209">-->
+<!--    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>-->
+<!--    <label for="inputAccount" class="sr-only">Email address</label>-->
+<!--    <input type="text" id="inputAccount" class="form-control" autocomplete="off" placeholder="請輸入帳號" required autofocus>-->
+<!--    <label for="inputPassword" class="sr-only">Password</label>-->
+<!--    <input type="password" id="inputPassword" class="form-control" autocomplete="off" placeholder="請輸入密碼" required>-->
+<!--    <div class="checkbox mb-3">-->
+<!--        <label>-->
+<!--            <input type="checkbox" value="remember-me"> Remember me-->
+<!--        </label>-->
+<!--    </div>-->
+<!--    <button id="signin_btn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--    <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020-2021 慈暉電腦有限公司</p>-->
+<!--</form>-->
+
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

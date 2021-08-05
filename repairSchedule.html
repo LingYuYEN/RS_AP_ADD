@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案件明細</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="repairSchedule.css">
+    <script type="text/javascript" src="repairSchedule.js"></script>
+    <script type="text/javascript" src="repairSearch.js"></script>
+    <script type="text/javascript" src="repairInput.js"></script>
+
+    <script>
+        getDetailInfos('detail_body')
+    </script>
+</head>
+<body>
+
+<form class="row g-3 m-5">
+    <div class="col-md-4 col-sm-12 row" id="repair_schedule_div">
+        <script>
+            getScheduleInfo()
+        </script>
+
+<!--        <label class="col-md-12 col-sm-6" for="">學&ensp;校：萬丹國中</label>-->
+<!--        <label class="col-md-12 col-sm-6" for="">申&ensp;告&ensp;人：Max</label>-->
+<!--        <label class="col-md-12 col-sm-6" for="">聯&ensp;絡&ensp;電&ensp;話：0912345678</label>-->
+<!--        <label class="col-md-12 col-sm-6" for="">設&ensp;備&ensp;類&ensp;型：骨幹交換器</label>-->
+<!--        <label class="col-md-12 col-sm-6" for="">狀&ensp;態：已結案</label>-->
+    </div>
+    <div class="col-md-8 col-sm-12 mb-3">
+        <label for="">障&ensp;礙&ensp;描&ensp;述：</label>
+        <textarea name="" id="repair_description_id" cols="30" rows="10" aria-label="" style="width: 100%;" disabled></textarea>
+    </div>
+    <hr style="width: 100%; border: 2px darkgoldenrod solid;">
+
+    <div>
+        <label class="m-3" for="">【障礙處理紀錄】</label>
+    </div>
+
+    <div class="col-md-12 mb-3">
+        <table class="table table-striped table-responsive">
+            <thead class="thead-dark">
+            <tr>
+                <th class="text-center" scope="col">序號</th>
+                <th scope="col">處理時間</th>
+                <th scope="col">處理紀錄</th>
+                <th scope="col">處理人員</th>
+<!--                <th scope="col">狀態</th>-->
+            </tr>
+            </thead>
+            <tbody id="detail_body">
+<!--            <tr>-->
+<!--                <th class="text-center" scope="row">1</th>-->
+<!--                <td>2021-05-28 08:00</td>-->
+<!--                <td><div class="warp">接案處理中</div></td>-->
+<!--                <td>駐點工程師</td>-->
+<!--                <td>處理中</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th class="text-center" scope="row">2</th>-->
+<!--                <td>2021-05-28 08:30</td>-->
+<!--                <td><div class="warp">致電引導0912345678引導 Max 確認 port 20, 32, 33 不通，安排到場更換設備</div></td>-->
+<!--                <td>駐點工程師</td>-->
+<!--                <td>處理中</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th class="text-center" scope="row">3</th>-->
+<!--                <td>-->
+<!--                    2021-05-28 15:22-->
+<!--                </td>-->
+<!--                <td><div class="warp">請幫我改 5/29 下午到場</div></td>-->
+<!--                <td>萬丹國中</td>-->
+<!--                <td>補充備註</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th class="text-center" scope="row">4</th>-->
+<!--                <td>-->
+<!--                    2021-05-29 08:12-->
+<!--                </td>-->
+<!--                <td><div class="warp">收到 3 備註</div></td>-->
+<!--                <td>駐點工程師</td>-->
+<!--                <td>處理中</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th class="text-center" scope="row">5</th>-->
+<!--                <td>-->
+<!--                    2021-05-29 15:08-->
+<!--                </td>-->
+<!--                <td><div class="warp">設備更換完成，檢測OK，結案</div></td>-->
+<!--                <td>駐點工程師</td>-->
+<!--                <td>結案</td>-->
+<!--            </tr>-->
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 mb-3">
+        <label class="mr-5" id="start_time_id" for=""></label>
+        <label class="" id="end_time_id" for="">【結案時間】 NA</label>
+    </div>
+
+    <div class="col-md-12 row" id="button_hidden_obj">
+        <label class="form-check-label col-md-6">新&ensp;增&ensp;備&ensp;註：</label>
+        <div class=" col-md-6">
+            <label for="inputStatus" class="form-label">變&ensp;更&ensp;進&ensp;度：</label>
+            <select id="inputStatus" class="form-select">
+                <option selected>請選擇進度...</option>
+                <option>未接案</option>
+                <option>處理中</option>
+                <option>結案</option>
+            </select>
+            <script>
+                selectStatusAction()
+            </script>
+        </div>
+        <textarea class="col-md-12 m-3" name="" id="add_message" cols="30" rows="10" aria-label=""></textarea>
+        <button type="submit" id="repair_detail_btn" onclick="putRepairDetail()" class="btn btn-outline-dark ml-3">送出</button>
+    </div>
+</form>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+</html>
