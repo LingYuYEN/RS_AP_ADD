@@ -1,23 +1,16 @@
 window.onload = function () {
-    console.log(
-        localStorage.getItem('alias'),
-        localStorage.getItem('priority'),
-        localStorage.getItem('url')
-    )
     document.getElementById('show_alias_p').innerHTML = localStorage.getItem('alias')
 }
 
 // 選擇鄉鎮市區
 function getTownship() {
     let urlStr = localStorage.getItem('url') + 'users'
-    // let uslStr = 'http://103.3.63.116:5000/' + 'users'
 
     $.ajax({
         type: 'GET',
         url: urlStr,
-        async: false,
         dataType: "json",
-        contentType: "application/json; charset=UTF-8",
+        contentType: "application/json",
         success: function (dataArr) {
             let townshipArray = []
             let result_township = []
@@ -33,48 +26,11 @@ function getTownship() {
                     $('#inputGroupSelect01').append('<option value="">' + data + '</option>')
                 })
             })
+        },
+        error: function () {
+            console.log('error')
         }
     })
-
-    $.ajax({
-        type: 'GET',
-        url: urlStr,
-        async: false,
-        dataType: "json",
-        contentType: "application/json; charset=UTF-8",
-        success: function (dataArr) {
-            let townshipArray = []
-            let result_township = []
-
-            dataArr.forEach(function (data) {
-                townshipArray.push(data['township'])
-                result_township = townshipArray.filter(function (element, index, array) {
-                    return array.indexOf(element) === index;
-                })
-            })
-            result_township.forEach(function (data) {
-                $(document).ready(function () {
-                    $('#inputGroupSelect01').append('<option value="">' + data + '</option>')
-                })
-            })
-        }
-    })
-    // $.getJSON(urlStr, function (dataArr) {
-    //     let townshipArray = []
-    //     let result_township = []
-    //
-    //     dataArr.forEach(function (data) {
-    //         townshipArray.push(data['township'])
-    //         result_township = townshipArray.filter(function (element, index, array) {
-    //             return array.indexOf(element) === index;
-    //         })
-    //     })
-    //     result_township.forEach(function (data) {
-    //         $(document).ready(function () {
-    //             $('#inputGroupSelect01').append('<option value="">' + data + '</option>')
-    //         })
-    //     })
-    // })
 }
 
 function getSchool() {
@@ -86,7 +42,6 @@ function getInputText(obj) {
 }
 
 function getRepairInfo() {
-
     function getAlert(obj) {
         $("#modal-body").empty()
 
@@ -126,22 +81,29 @@ function submitOnclick() {
     let time = now.toLocaleString()
 
     let postObj = {
-        id: 1,
-        school: schoolName,
-        name: getInputText('input01'),
-        tel: getInputText('input02'),
-        device_type: device_type,
-        repair_description: getInputText('input03'),
-        start_time: time
+        "id": 1,
+        "school": schoolName,
+        "name": getInputText('input01'),
+        "tel": getInputText('input02'),
+        "device_type": device_type,
+        "repair_description": getInputText('input03'),
+        "start_time": time
     }
 
-    let json = JSON.stringify(postObj)
+    let jsonStr = JSON.stringify(postObj)
     $.ajax({
         type: 'POST',
         url: localStorage.getItem('url') + 'repair_infos',
-        // async: false,
+        async: true,
         dataType: 'json',
-        data: json,
-        success: console.log('success'),
+        data: jsonStr,
+        contentType: "application/json",
+        success: function (response) {
+            console.log(response)
+            console.log('success')
+        },
+        error: function () {
+            console.log('error')
+        }
     })
 }

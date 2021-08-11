@@ -1,5 +1,6 @@
 // 頁面載入完成後, 才會調用下列 func, 故須先 window onload
 window.onload = function () {
+    // localStorage.setItem('url', 'http://0.0.0.0:5000/')
     localStorage.setItem('url', 'http://103.3.63.116:5000/')
     localStorage.setItem('alias', null)
     localStorage.setItem('priority', null)
@@ -20,7 +21,7 @@ function signinBtnActive() {
     let jsonStr = JSON.stringify(postObj)
     $.ajax({
         type: 'POST',
-        url: 'http://103.3.63.116:5000/login',
+        url: localStorage.getItem('url') + 'login',
         dataType: 'json',
         data: jsonStr,
         contentType: "application/json",
