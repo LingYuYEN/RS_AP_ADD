@@ -94,9 +94,12 @@ function submitOnclick() {
     $.ajax({
         type: 'POST',
         url: localStorage.getItem('url') + 'repair_infos',
-        async: true,
         dataType: 'json',
         data: jsonStr,
+        // headers: {
+        //     'access-control-allow-credentials': true,
+        //     "Access-Control-Allow-Origin": "*"
+        // },
         contentType: "application/json",
         success: function (response) {
             console.log(response)

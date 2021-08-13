@@ -1,11 +1,11 @@
 window.onload = function () {
     document.getElementById('show_alias_p').innerHTML = localStorage.getItem('alias')
-
     getRepairInfos('repair_tbody')
+    localStorage.setItem('repair_id', '0')
+    getTag()
 }
 
 function getTag() {
-    console.log(localStorage.getItem('repair_id'))
     let aTag = document.getElementById('connect_page')
 
     if (localStorage.getItem('repair_id') === '0') {
@@ -17,10 +17,6 @@ function getTag() {
     }
 }
 
-// function getAlert() {
-//     alert('Error： 請選擇欲查詢的項次')
-// }
-
 function getRepairInfos(id) {
     let urlStr = localStorage.getItem('url') + 'repair_infos'
     let th_num = 1
@@ -28,8 +24,14 @@ function getRepairInfos(id) {
     $.ajax({
         type: "GET",
         url: urlStr,
-        contentType: 'application/json',
-        sync: true,
+        dataType: "json",
+        contentType: "application/json",
+        headers: {
+            "access-control-allow-credentials": true,
+            "access-control-allow-headers": "access-control-allow-origin",
+            "access-control-allow-methods": "*",
+            "access-control-allow-origin": "*"
+        },
         success: function (dataArr) {
             dataArr.forEach(function (data) {
                 if (localStorage.getItem('alias') === '駐點工程師') {
@@ -140,6 +142,7 @@ function getRepairInfos(id) {
                     th_num += 1
                 }
             })
+            console.log(dataArr)
         },
         error: function (response) {
             console.log(response)
