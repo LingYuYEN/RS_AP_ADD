@@ -87,7 +87,10 @@ function submitOnclick() {
         "tel": getInputText('input02'),
         "device_type": device_type,
         "repair_description": getInputText('input03'),
-        "start_time": time
+        "start_time": time,
+        "end_time": null,
+        "status": "未接案",
+        "repair_records": null
     }
 
     let jsonStr = JSON.stringify(postObj)
@@ -96,10 +99,6 @@ function submitOnclick() {
         url: localStorage.getItem('url') + 'repair_infos',
         dataType: 'json',
         data: jsonStr,
-        // headers: {
-        //     'access-control-allow-credentials': true,
-        //     "Access-Control-Allow-Origin": "*"
-        // },
         contentType: "application/json",
         success: function (response) {
             console.log(response)

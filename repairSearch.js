@@ -22,18 +22,14 @@ function getRepairInfos(id) {
     let th_num = 1
 
     $.ajax({
-        type: "GET",
+        type: 'GET',
         url: urlStr,
-        dataType: "json",
-        contentType: "application/json",
-        headers: {
-            "access-control-allow-credentials": true,
-            "access-control-allow-headers": "access-control-allow-origin",
-            "access-control-allow-methods": "*",
-            "access-control-allow-origin": "*"
-        },
         success: function (dataArr) {
+            // console.log(dataArr)
+            // console.log(typeof dataArr)
+
             dataArr.forEach(function (data) {
+                // console.log(data)
                 if (localStorage.getItem('alias') === '駐點工程師') {
                     let repair_tbody = document.getElementById(id)
                     let repair_tr = document.createElement('tr')
@@ -142,7 +138,6 @@ function getRepairInfos(id) {
                     th_num += 1
                 }
             })
-            console.log(dataArr)
         },
         error: function (response) {
             console.log(response)
