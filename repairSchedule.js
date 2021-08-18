@@ -1,3 +1,8 @@
+window.onload = function () {
+    getDetailInfos('detail_body')
+    console.log(localStorage.getItem('repair_id'))
+}
+
 let now = new Date()
 let time = now.toLocaleString()
 
@@ -105,8 +110,6 @@ function getScheduleInfo() {
 }
 
 function putRepairDetail() {
-    // let now = new Date()
-    // let time = now.toLocaleString()
     let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
 
     let putObj = {

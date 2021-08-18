@@ -25,11 +25,7 @@ function getRepairInfos(id) {
         type: 'GET',
         url: urlStr,
         success: function (dataArr) {
-            // console.log(dataArr)
-            // console.log(typeof dataArr)
-
             dataArr.forEach(function (data) {
-                // console.log(data)
                 if (localStorage.getItem('alias') === '駐點工程師') {
                     let repair_tbody = document.getElementById(id)
                     let repair_tr = document.createElement('tr')
@@ -76,9 +72,7 @@ function getRepairInfos(id) {
 
                         // 再將選中的 cell 加入 hightlight
                         repair_tr.classList.add('highlight')
-
-                        localStorage.setItem('repair_id', data['id'])
-
+                        localStorage.setItem('repair_id', data.id)
                         getTag()
                     }
 
@@ -129,9 +123,7 @@ function getRepairInfos(id) {
 
                         // 再將選中的 cell 加入 hightlight
                         repair_tr.classList.add('highlight')
-
-                        localStorage.setItem('repair_id', data['id'])
-
+                        localStorage.setItem('repair_id', data.id)
                         getTag()
                     }
 
