@@ -36,6 +36,8 @@ function getRepairInfos(id) {
                     let repair_td_device_type = document.createElement('td')
                     let repair_td_repair_description = document.createElement('td')
                     let repair_td_start_time = document.createElement('td')
+                    let repair_td_end_time = document.createElement('td')
+                    let repair_td_completed = document.createElement('td')
 
                     repair_tr.id = 'repair_tr'
 
@@ -47,6 +49,12 @@ function getRepairInfos(id) {
                     repair_td_device_type.innerHTML = data.device_type
                     repair_td_repair_description.innerHTML = data.repair_description
                     repair_td_start_time.innerHTML = data.start_time
+                    repair_td_end_time.innerHTML = data.end_time
+                    if (data.end_time == null) {
+                        repair_td_completed.innerHTML = '否'
+                    } else {
+                        repair_td_completed.innerHTML = '是'
+                    }
 
                     repair_tbody.appendChild(repair_tr)
                     repair_tr.appendChild(repair_th)
@@ -56,6 +64,8 @@ function getRepairInfos(id) {
                     repair_tr.appendChild(repair_td_device_type)
                     repair_tr.appendChild(repair_td_repair_description)
                     repair_tr.appendChild(repair_td_start_time)
+                    repair_tr.appendChild(repair_td_end_time)
+                    repair_tr.appendChild(repair_td_completed)
 
                     // 點擊後選中 table cell
                     repair_tr.onclick = function () {
@@ -87,6 +97,8 @@ function getRepairInfos(id) {
                     let repair_td_device_type = document.createElement('td')
                     let repair_td_repair_description = document.createElement('td')
                     let repair_td_start_time = document.createElement('td')
+                    let repair_td_end_time = document.createElement('td')
+                    let repair_td_completed = document.createElement('td')
 
                     repair_tr.id = 'repair_tr'
 
@@ -98,6 +110,12 @@ function getRepairInfos(id) {
                     repair_td_device_type.innerHTML = data.device_type
                     repair_td_repair_description.innerHTML = data.repair_description
                     repair_td_start_time.innerHTML = data.start_time
+                    repair_td_end_time.innerHTML = data.end_time
+                    if (data.end_time == null) {
+                        repair_td_completed.innerHTML = '否'
+                    } else {
+                        repair_td_completed.innerHTML = '是'
+                    }
 
                     repair_tbody.appendChild(repair_tr)
                     repair_tr.appendChild(repair_th)
@@ -107,6 +125,8 @@ function getRepairInfos(id) {
                     repair_tr.appendChild(repair_td_device_type)
                     repair_tr.appendChild(repair_td_repair_description)
                     repair_tr.appendChild(repair_td_start_time)
+                    repair_tr.appendChild(repair_td_end_time)
+                    repair_tr.appendChild(repair_td_completed)
 
                     // 點擊後選中 table cell
                     repair_tr.onclick = function () {
@@ -138,6 +158,35 @@ function getRepairInfos(id) {
     })
 }
 
+function getAccount2() {
+    let inputAccount = document.getElementById('inputPasswordSelect04')
+    inputAccount.value = localStorage.getItem('account')
+}
+
+function updatePassword2() {
+    let inputAccount = document.getElementById('inputPasswordSelect04').value
+    let inputPassword = document.getElementById('inputPasswordSelect05').value
+    let inputNewPassword = document.getElementById('inputPasswordSelect06').value
+
+    $.ajax({
+        type: 'POST',
+        url: localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        dataType: 'json',
+        contentType: "application/json",
+        success: function (response) {
+            console.log(response)
+            if (response == null) {
+                alert('無此帳號或密碼錯誤！！')
+            } else {
+                alert('密碼已變更完成，請重新登入！！')
+                window.location = 'signin.html'
+            }
+        },
+        error: function () {
+            console.log('error')
+        }
+    })
+}
 
 
 

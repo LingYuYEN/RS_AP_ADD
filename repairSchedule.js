@@ -1,12 +1,13 @@
 window.onload = function () {
-    getDetailInfos('detail_body')
-    console.log(localStorage.getItem('repair_id'))
+    autoGetDetailInfos('detail_body')
+    // console.log(localStorage.getItem('repair_id'))
 }
 
 let now = new Date()
 let time = now.toLocaleString()
 
 function getScheduleInfo() {
+
     let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
     $.getJSON(urlStr, function (data) {
         let repair_schedule_div = document.getElementById('repair_schedule_div')
@@ -40,33 +41,43 @@ function getScheduleInfo() {
         repair_schedule_change_status.innerHTML = '工程師接案'
         repair_schedule_change_status.type = 'button'
         repair_schedule_change_status.onclick = function () {
+
             let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=處理中'
-            $.ajax({
-                url: urlStr,
-                type: 'PUT',
-                success: function(result) {
-                    console.log(result)
-                    window.location.reload()
-                }
-            })
 
             let putUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
 
             let putObj = {
                 id: 0,
                 record_time: time,
-                record_info: '駐點工程師接案',
+                record_info: '駐點工程師接案處理',
                 record_user: '駐點工程師'
             }
+
             let json = JSON.stringify(putObj)
-            $.ajax({
-                url: putUrlStr,
-                type: 'PUT',
-                data: json,
-                success: function(result) {
-                    console.log(result)
-                }
-            })
+
+            $.when(
+                $.ajax({
+                    url: urlStr,
+                    type: 'PUT',
+                    success: function(result) {
+                        console.log(result)
+                        window.location.reload()
+                    }
+                }),
+                $.ajax({
+                    url: putUrlStr,
+                    type: 'PUT',
+                    data: json,
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log(result)
+                        window.location.reload()
+                    },
+                    error: function () {
+                        console.log('error')
+                    }
+                })
+            )
 
 
             let detail_tbody = document.getElementById('detail_body')
@@ -90,9 +101,14 @@ function getScheduleInfo() {
             detail_tr.appendChild(detail_td_user)
         }
 
+        if (localStorage.getItem('priority') === '1') {
+            repair_schedule_change_status.hidden = true
+            document.getElementById('inputStatusDiv').hidden = true
+        }
+
         if (data['status'] === '處理中') {
             repair_schedule_change_status.hidden = true
-        } else if (data['status'] === '結案') {
+        } else if (data['status'] === '已結案') {
             repair_schedule_end_time.innerHTML = '【結案時間】 ' + data['end_time']
             document.getElementById('button_hidden_obj').hidden = true
             repair_schedule_change_status.hidden = true
@@ -111,57 +127,103 @@ function getScheduleInfo() {
 
 function putRepairDetail() {
     let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
-
+    let text = document.getElementById('add_message')
     let putObj = {
         id: 0,
         record_time: time,
-        record_info: getInputText('add_message'),
-        record_user: '駐點工程師'
+        record_info: text.value,
+        record_user: localStorage.getItem('alias')
     }
     let json = JSON.stringify(putObj)
     $.ajax({
         url: urlStr,
         type: 'PUT',
         data: json,
+        contentType: "application/json",
         success: function(result) {
             console.log(result)
+            window.location.reload()
+        },
+        error: function () {
+            console.log('error')
         }
     })
 
 }
+function autoGetDetailInfos(id) {
+    let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+
+    $.getJSON(urlStr, function (dataArr) {
+        let detail_arr = dataArr.repair_record;
+        if(detail_arr == null) {
+            return console.log('no value')
+        } else {
+            detail_arr.forEach(function (data) {
+                let detail_tbody = document.getElementById(id)
+                let detail_tr = document.createElement('tr')
+                let detail_th = document.createElement('th')
+                let detail_td_time = document.createElement('td')
+                let detail_td_info = document.createElement('td')
+                let detail_td_user = document.createElement('td')
+                // let detail_td_status = document.createElement('td')
+
+                detail_th.classList.add('text-center')
+                detail_th.scope = 'row'
+                detail_th.innerHTML = data['id']
+                detail_td_time.innerHTML = data['record_time']
+                detail_td_info.innerHTML = data['record_info']
+                detail_td_user.innerHTML = data['record_user']
+                // detail_td_status.innerHTML = '處理中'
+
+                detail_tbody.appendChild(detail_tr)
+                detail_tr.appendChild(detail_th)
+                detail_tr.appendChild(detail_td_time)
+                detail_tr.appendChild(detail_td_info)
+                detail_tr.appendChild(detail_td_user)
+                // detail_tr.appendChild(detail_td_status)
+            });
+        }
+    })
+}
 
 function getDetailInfos(id) {
     let urlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
-    // let th_num = 1
 
     $.getJSON(urlStr, function (dataArr) {
-        let detail_arr = dataArr.repair_record
-        detail_arr.forEach(function (data) {
-            let detail_tbody = document.getElementById(id)
-            let detail_tr = document.createElement('tr')
-            let detail_th = document.createElement('th')
-            let detail_td_time = document.createElement('td')
-            let detail_td_info = document.createElement('td')
-            let detail_td_user = document.createElement('td')
-            // let detail_td_status = document.createElement('td')
+        let detail_arr = dataArr.repair_record;
+        if(detail_arr == null) {
+            return console.log('no value')
+        } else {
+            detail_arr.forEach(function (data) {
+                let detail_tbody = document.getElementById(id)
+                let detail_tr = document.createElement('tr')
+                let detail_th = document.createElement('th')
+                let detail_td_time = document.createElement('td')
+                let detail_td_info = document.createElement('td')
+                let detail_td_user = document.createElement('td')
+                // let detail_td_status = document.createElement('td')
 
-            detail_th.classList.add('text-center')
-            detail_th.scope = 'row'
-            detail_th.innerHTML = data['id']
-            detail_td_time.innerHTML = data['record_time']
-            detail_td_info.innerHTML = data['record_info']
-            detail_td_user.innerHTML = data['record_user']
-            // detail_td_status.innerHTML = '處理中'
+                detail_th.classList.add('text-center')
+                detail_th.scope = 'row'
+                detail_th.innerHTML = data['id']
+                detail_td_time.innerHTML = data['record_time']
+                detail_td_info.innerHTML = data['record_info']
+                detail_td_user.innerHTML = data['record_user']
+                // detail_td_status.innerHTML = '處理中'
 
-            detail_tbody.appendChild(detail_tr)
-            detail_tr.appendChild(detail_th)
-            detail_tr.appendChild(detail_td_time)
-            detail_tr.appendChild(detail_td_info)
-            detail_tr.appendChild(detail_td_user)
-            // detail_tr.appendChild(detail_td_status)
-        })
+                detail_tbody.appendChild(detail_tr)
+                detail_tr.appendChild(detail_th)
+                detail_tr.appendChild(detail_td_time)
+                detail_tr.appendChild(detail_td_info)
+                detail_tr.appendChild(detail_td_user)
+                // detail_tr.appendChild(detail_td_status)
+            }).done(function () {
+                window.location.reload()
+            })
+        }
     })
 }
+
 let statusSelect = '處理中'
 function selectStatusAction() {
     $('#inputStatus').change(function () {
@@ -171,41 +233,56 @@ function selectStatusAction() {
         $.ajax({
             url: urlStr,
             type: 'PUT',
+            contentType: "application/json",
             success: function(result) {
                 console.log(result)
-                if (statusSelect === '結案') {
-                    // 加入結案時間
-                    let putUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/end_time?end_time=' + time
-                    $.ajax({
-                        url: putUrlStr,
-                        type: 'PUT',
-                        success: function(result) {
-                            console.log(result)
-                            window.location.reload()
-                        }
-                    })
-
-                    let putFinalMessageUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
-
-                    let putObj = {
-                        id: 0,
-                        record_time: time,
-                        record_info: '駐點工程師結案',
-                        record_user: '駐點工程師'
-                    }
-                    let json = JSON.stringify(putObj)
-                    $.ajax({
-                        url: putFinalMessageUrlStr,
-                        type: 'PUT',
-                        data: json,
-                        success: function(result) {
-                            console.log(result)
-                        }
-                    })
-                }
                 window.location.reload()
             }
         })
+
+        if (statusSelect === '已結案') {
+            // 加入結案時間, 狀態, 結案註解
+            let putUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/end_time?end_time=' + time
+            let putStatusStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id') + '/detail?repair_status=' + statusSelect
+            let putFinalMessageUrlStr = localStorage.getItem('url') + 'repair_infos/' + localStorage.getItem('repair_id')
+
+            let putObj = {
+                id: 0,
+                record_time: time,
+                record_info: '駐點工程師結案',
+                record_user: '駐點工程師'
+            }
+            let json = JSON.stringify(putObj)
+            $.when(
+                $.ajax({
+                    url: putStatusStr,
+                    type: 'PUT',
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log(result)
+                        window.location.reload()
+                    }
+                }),
+                $.ajax({
+                    url: putUrlStr,
+                    type: 'PUT',
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log(result)
+                        window.location.reload()
+                    }
+                }),
+                $.ajax({
+                    url: putFinalMessageUrlStr,
+                    type: 'PUT',
+                    data: json,
+                    contentType: "application/json",
+                    success: function(result) {
+                        console.log(result)
+                    }
+                })
+            )
+        }
 
 
     })

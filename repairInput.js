@@ -12,20 +12,20 @@ function getTownship() {
         dataType: "json",
         contentType: "application/json",
         success: function (dataArr) {
-            let townshipArray = []
-            let result_township = []
+            let townshipArray = [];
+            let result_township = [];
 
             dataArr.forEach(function (data) {
                 townshipArray.push(data['township'])
                 result_township = townshipArray.filter(function (element, index, array) {
                     return array.indexOf(element) === index;
-                })
-            })
+                });
+            });
             result_township.forEach(function (data) {
                 $(document).ready(function () {
                     $('#inputGroupSelect01').append('<option value="">' + data + '</option>')
-                })
-            })
+                });
+            });
         },
         error: function () {
             console.log('error')
@@ -103,6 +103,39 @@ function submitOnclick() {
         success: function (response) {
             console.log(response)
             console.log('success')
+        },
+        error: function () {
+            console.log('error')
+        }
+    })
+}
+
+function getAccount() {
+    let inputAccount = document.getElementById('inputPasswordSelect01')
+    inputAccount.value = localStorage.getItem('account')
+    if (localStorage.getItem('priority') === '1') {
+        inputAccount.setAttribute('disabled', 'disabled')
+    }
+}
+
+function updatePassword() {
+    let inputAccount = document.getElementById('inputPasswordSelect01').value
+    let inputPassword = document.getElementById('inputPasswordSelect02').value
+    let inputNewPassword = document.getElementById('inputPasswordSelect03').value
+
+    $.ajax({
+        type: 'POST',
+        url: localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        dataType: 'json',
+        contentType: "application/json",
+        success: function (response) {
+            console.log(response)
+            if (response == null) {
+                alert('無此帳號或密碼錯誤！！')
+            } else {
+                alert('密碼已變更完成，請重新登入！！')
+                window.location = 'signin.html'
+            }
         },
         error: function () {
             console.log('error')

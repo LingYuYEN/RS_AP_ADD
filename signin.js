@@ -2,6 +2,7 @@
 window.onload = function () {
     // localStorage.setItem('url', 'http://0.0.0.0:5000/')
     localStorage.setItem('url', 'http://103.3.63.116:5000/')
+    localStorage.setItem('account', null)
     localStorage.setItem('alias', null)
     localStorage.setItem('priority', null)
 }
@@ -26,9 +27,10 @@ function signinBtnActive() {
         data: jsonStr,
         contentType: "application/json",
         success: function (data) {
-            if (data === '未取得 token') {
+            if (data === "未取得 token") {
                 alert('查無此帳號或密碼不正確！！')
             } else {
+                localStorage.setItem('account', data['account'])
                 localStorage.setItem('alias', data['alias'])
                 localStorage.setItem('priority', data['priority'])
                 // window.location.assign('repairInput.html')

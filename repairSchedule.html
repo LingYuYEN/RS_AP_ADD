@@ -17,21 +17,15 @@
         <script>
             getScheduleInfo()
         </script>
-
-<!--        <label class="col-md-12 col-sm-6" for="">學&ensp;校：萬丹國中</label>-->
-<!--        <label class="col-md-12 col-sm-6" for="">申&ensp;告&ensp;人：Max</label>-->
-<!--        <label class="col-md-12 col-sm-6" for="">聯&ensp;絡&ensp;電&ensp;話：0912345678</label>-->
-<!--        <label class="col-md-12 col-sm-6" for="">設&ensp;備&ensp;類&ensp;型：骨幹交換器</label>-->
-<!--        <label class="col-md-12 col-sm-6" for="">狀&ensp;態：已結案</label>-->
     </div>
     <div class="col-md-8 col-sm-12 mb-3">
-        <label for="">障&ensp;礙&ensp;描&ensp;述：</label>
+        <label>障&ensp;礙&ensp;描&ensp;述：</label>
         <textarea name="" id="repair_description_id" cols="30" rows="10" aria-label="" style="width: 100%;" disabled></textarea>
     </div>
     <hr style="width: 100%; border: 2px darkgoldenrod solid;">
 
     <div>
-        <label class="m-3" for="">【障礙處理紀錄】</label>
+        <label class="m-3">【障礙處理紀錄】</label>
     </div>
 
     <div class="col-md-12 mb-3">
@@ -91,19 +85,19 @@
         </table>
     </div>
     <div class="col-md-12 mb-3">
-        <label class="mr-5" id="start_time_id" for=""></label>
-        <label class="" id="end_time_id" for="">【結案時間】 NA</label>
+        <label class="mr-5" id="start_time_id"></label>
+        <label class="" id="end_time_id">【結案時間】 NA</label>
     </div>
 
     <div class="col-md-12 row" id="button_hidden_obj">
         <label class="form-check-label col-md-6">新&ensp;增&ensp;備&ensp;註：</label>
-        <div class=" col-md-6">
+        <div id="inputStatusDiv" class=" col-md-6">
             <label for="inputStatus" class="form-label">變&ensp;更&ensp;進&ensp;度：</label>
             <select id="inputStatus" class="form-select">
                 <option selected>請選擇進度...</option>
                 <option>未接案</option>
                 <option>處理中</option>
-                <option>結案</option>
+                <option>已結案</option>
             </select>
             <script>
                 selectStatusAction()
