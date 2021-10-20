@@ -1,5 +1,9 @@
 window.onload = function () {
     document.getElementById('show_alias_p').innerHTML = localStorage.getItem('alias')
+    if (localStorage.getItem('priority') === '1') {
+        document.getElementById('inputGroupSelectDiv01').hidden = true
+        document.getElementById('inputGroupSelectDiv02').hidden = true
+    }
 }
 
 // 選擇鄉鎮市區
@@ -53,7 +57,7 @@ function getRepairInfo() {
         let now = new Date()
         let time = now.toLocaleString()
 
-        modalSchool.innerHTML = '申&ensp;告&ensp;學&ensp;校：' + schoolName
+        modalSchool.innerHTML = '申&ensp;告&ensp;學&ensp;校：' + localStorage.getItem('alias')
         modalName.innerHTML = '申&ensp;請&ensp;人：' + getInputText('input01')
         modalTime.innerHTML = '申&ensp;告&ensp;時&ensp;間：' + time
         modalTel.innerHTML = '聯&ensp;絡&ensp;電&ensp;話：' + getInputText('input02')
@@ -79,18 +83,33 @@ function selectAction() {
 function submitOnclick() {
     let now = new Date()
     let time = now.toLocaleString()
-
-    let postObj = {
-        "id": 1,
-        "school": schoolName,
-        "name": getInputText('input01'),
-        "tel": getInputText('input02'),
-        "device_type": device_type,
-        "repair_description": getInputText('input03'),
-        "start_time": time,
-        "end_time": null,
-        "status": "未接案",
-        "repair_records": null
+    let postObj
+    if (localStorage.getItem('priority') === '0') {
+        postObj = {
+            "id": 1,
+            "school": schoolName,
+            "name": getInputText('input01'),
+            "tel": getInputText('input02'),
+            "device_type": device_type,
+            "repair_description": getInputText('input03'),
+            "start_time": time,
+            "end_time": null,
+            "status": "未接案",
+            "repair_records": null
+        }
+    } else if (localStorage.getItem('priority') === '1') {
+        postObj = {
+            "id": 1,
+            "school": localStorage.getItem('alias'),
+            "name": getInputText('input01'),
+            "tel": getInputText('input02'),
+            "device_type": device_type,
+            "repair_description": getInputText('input03'),
+            "start_time": time,
+            "end_time": null,
+            "status": "未接案",
+            "repair_records": null
+        }
     }
 
     let jsonStr = JSON.stringify(postObj)
@@ -100,12 +119,11 @@ function submitOnclick() {
         dataType: 'json',
         data: jsonStr,
         contentType: "application/json",
-        success: function (response) {
-            console.log(response)
+        success: function () {
             console.log('success')
         },
-        error: function () {
-            console.log('error')
+        error: function (err) {
+            console.log('error: ' + err)
         }
     })
 }

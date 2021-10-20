@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="signin.js"></script>
-<!--    <script type="text/javascript" src="repairInput.js"></script>-->
 </head>
 <body class="d-block">
-<div class="jumbotron jumbotron-fluid text-center" style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+<div class="jumbotron jumbotron-fluid text-center p-5" style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
     <div class="container" style="color: white">
-
-        <h1 class="mb-5">屏東縣政府</h1>
+        <h1 class="">屏東縣政府</h1>
+        <h2>鶴聲國小主辦</h2>
         <h2>110年度補助本縣國中小</h2>
         <h2>電腦教室資訊設備更新採購案</h2>
     </div>
@@ -26,14 +25,14 @@
         <img class="mb-4" src="images/swell_logo.png" alt="" width="145" height="209">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputAccount" class="sr-only">Email address</label>
-        <input type="text" id="inputAccount" class="form-control form-ctrl" autocomplete="off" placeholder="請輸入帳號" required autofocus>
+        <input type="text" id="inputAccount" class="form-control form-ctrl mb-3" autocomplete="off" placeholder="請輸入帳號" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control form-ctrl" autocomplete="off" placeholder="請輸入密碼" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
+        <input type="password" id="inputPassword" class="form-control form-ctrl mb-5" autocomplete="off" placeholder="請輸入密碼" required>
+<!--        <div class="checkbox mb-3">-->
+<!--            <label>-->
+<!--                <input type="checkbox" value="remember-me"> Remember me-->
+<!--            </label>-->
+<!--        </div>-->
         <button id="signin_btn" class="btn btn-lg btn-primary btn-block form-ctrl" onclick="signinBtnActive()" type="button">Sign in</button>
         <p class="mt-5 mb-3 text-muted">Copyright &copy; 2020-2021 慈暉電腦有限公司</p>
     </form>

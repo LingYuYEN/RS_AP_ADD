@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="repairInput.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
     <style>
         .navbar {
             background: #9492E7;
@@ -43,7 +44,7 @@
 <div class="card m-5">
     <h5 class="card-header">請輸入報修資訊</h5>
     <div class="card-body">
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" id="inputGroupSelectDiv01">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">鄉鎮市區</label>
             </div>
@@ -55,7 +56,7 @@
             </select>
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" id="inputGroupSelectDiv02">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect02">申告學校</label>
             </div>
@@ -168,29 +169,18 @@
                 <form>
                     <div class="form-group">
                         <label>帳&ensp;號：</label>
-                        <input id="inputPasswordSelect01" class="form-control" placeholder="請輸入您的帳號" type="text" aria-label="">
+                        <input type="text"  id="inputPasswordSelect01" class="form-control" placeholder="請輸入您的帳號" aria-label="">
                     </div>
 
                     <div class="form-group">
                         <label>原&ensp;密&ensp;碼：</label>
-                        <input id="inputPasswordSelect02" class="form-control" placeholder="請輸入您的原始密碼" aria-label="">
+                        <input type="password" id="inputPasswordSelect02" class="form-control" placeholder="請輸入您的原始密碼" aria-label="">
                     </div>
 
                     <div class="form-group">
                         <label>新&ensp;密&ensp;碼：</label>
-                        <input id="inputPasswordSelect03" class="form-control" placeholder="請輸入您的新密碼" aria-label="">
+                        <input type="password" id="inputPasswordSelect03" class="form-control" placeholder="請輸入您的新密碼" aria-label="">
                     </div>
-
-<!--                    <div class="form-group">-->
-<!--                        <label>手&ensp;機&ensp;號&ensp;碼：</label>-->
-<!--                        <input class="form-control" placeholder="請輸入綁定的手機號碼" aria-label="">-->
-<!--                        <input type="button" value="發送驗證碼" class="btn btn-info">-->
-<!--                    </div>-->
-
-<!--                    <div class="form-group">-->
-<!--                        <label>驗&ensp;證&ensp;碼：</label>-->
-<!--                        <input class="form-control" placeholder="請輸入簡訊驗證碼" aria-label="">-->
-<!--                    </div>-->
                 </form>
             </div>
             <div class="modal-footer">
@@ -200,7 +190,6 @@
     </div>
 </div>
 
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 

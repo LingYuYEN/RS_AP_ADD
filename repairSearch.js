@@ -26,7 +26,7 @@ function getRepairInfos(id) {
         url: urlStr,
         success: function (dataArr) {
             dataArr.forEach(function (data) {
-                if (localStorage.getItem('alias') === '駐點工程師') {
+                if (localStorage.getItem('alias') === '慈暉工程師') {
                     let repair_tbody = document.getElementById(id)
                     let repair_tr = document.createElement('tr')
                     let repair_th = document.createElement('th')
@@ -50,6 +50,7 @@ function getRepairInfos(id) {
                     repair_td_repair_description.innerHTML = data.repair_description
                     repair_td_start_time.innerHTML = data.start_time
                     repair_td_end_time.innerHTML = data.end_time
+                    repair_td_completed.style.textAlign = 'center'
                     if (data.end_time == null) {
                         repair_td_completed.innerHTML = '否'
                     } else {
@@ -111,6 +112,7 @@ function getRepairInfos(id) {
                     repair_td_repair_description.innerHTML = data.repair_description
                     repair_td_start_time.innerHTML = data.start_time
                     repair_td_end_time.innerHTML = data.end_time
+                    repair_td_completed.style.textAlign = 'center'
                     if (data.end_time == null) {
                         repair_td_completed.innerHTML = '否'
                     } else {

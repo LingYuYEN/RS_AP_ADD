@@ -49,8 +49,8 @@ function getScheduleInfo() {
             let putObj = {
                 id: 0,
                 record_time: time,
-                record_info: '駐點工程師接案處理',
-                record_user: '駐點工程師'
+                record_info: '慈暉工程師接案處理',
+                record_user: '慈暉工程師'
             }
 
             let json = JSON.stringify(putObj)
@@ -91,8 +91,8 @@ function getScheduleInfo() {
             detail_th.scope = 'row'
             detail_th.innerHTML = '1'
             detail_td_time.innerHTML = time
-            detail_td_info.innerHTML = '駐點工程師接案處理'
-            detail_td_user.innerHTML = '駐點工程師'
+            detail_td_info.innerHTML = '慈暉工程師接案處理'
+            detail_td_user.innerHTML = '慈暉工程師'
 
             detail_tbody.appendChild(detail_tr)
             detail_tr.appendChild(detail_th)
@@ -249,8 +249,8 @@ function selectStatusAction() {
             let putObj = {
                 id: 0,
                 record_time: time,
-                record_info: '駐點工程師結案',
-                record_user: '駐點工程師'
+                record_info: '慈暉工程師結案',
+                record_user: '慈暉工程師'
             }
             let json = JSON.stringify(putObj)
             $.when(

@@ -7,6 +7,7 @@
     <link href="repairSearch.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="repairSearch.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-light">
@@ -46,7 +47,7 @@
                 <th scope="col">障礙描述</th>
                 <th scope="col">申告時間</th>
                 <th scope="col">結案時間</th>
-                <th scope="col">是否完修</th>
+                <th scope="col" style="text-align: center">是否完修</th>
             </tr>
             </thead>
             <tbody id="repair_tbody">
@@ -68,17 +69,17 @@
                 <form>
                     <div class="form-group">
                         <label>帳&ensp;號：</label>
-                        <input id="inputPasswordSelect04" class="form-control" placeholder="請輸入您的帳號" aria-label="">
+                        <input type="text" id="inputPasswordSelect04" class="form-control" placeholder="請輸入您的帳號" aria-label="">
                     </div>
 
                     <div class="form-group">
                         <label>原&ensp;密&ensp;碼：</label>
-                        <input id="inputPasswordSelect05" class="form-control" placeholder="請輸入您的原始密碼" aria-label="">
+                        <input type="password" id="inputPasswordSelect05" class="form-control" placeholder="請輸入您的原始密碼" aria-label="">
                     </div>
 
                     <div class="form-group">
                         <label>新&ensp;密&ensp;碼：</label>
-                        <input id="inputPasswordSelect06" class="form-control" placeholder="請輸入您的新密碼" aria-label="">
+                        <input type="password" id="inputPasswordSelect06" class="form-control" placeholder="請輸入您的新密碼" aria-label="">
                     </div>
 
 <!--                    <div class="form-group">-->
