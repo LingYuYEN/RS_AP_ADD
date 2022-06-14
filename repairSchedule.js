@@ -1,6 +1,12 @@
 window.onload = function () {
     autoGetDetailInfos('detail_body')
     // console.log(localStorage.getItem('repair_id'))
+    let case_closed_remark = document.getElementById('case_closed_remark')
+    let alias = localStorage.getItem('alias')
+    if (alias !== "慈暉工程師") {
+        case_closed_remark.hidden = true
+    }
+
 }
 
 let now = new Date()

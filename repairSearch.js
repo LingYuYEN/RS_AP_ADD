@@ -26,7 +26,7 @@ function getRepairInfos(id) {
         url: urlStr,
         success: function (dataArr) {
             dataArr.forEach(function (data) {
-                if (localStorage.getItem('alias') === '慈暉工程師') {
+                if (localStorage.getItem('priority') === '0') {
                     let repair_tbody = document.getElementById(id)
                     let repair_tr = document.createElement('tr')
                     let repair_th = document.createElement('th')

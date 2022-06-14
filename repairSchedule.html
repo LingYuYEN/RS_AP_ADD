@@ -104,7 +104,11 @@
             </script>
         </div>
         <textarea class="col-md-12 m-3" name="" id="add_message" cols="30" rows="10" aria-label=""></textarea>
-        <button type="submit" id="repair_detail_btn" onclick="putRepairDetail()" class="btn btn-outline-dark ml-3">送出</button>
+        <div class="row col-md-12 m-3 p-0">
+            <p class="col-10 p-0 text-danger" id="case_closed_remark">＊請結案工程師務必於備註最後一行寫上 “現場經XXX老師確認已可正常使用”</p>
+            <button type="submit" id="repair_detail_btn" onclick="putRepairDetail()" class="btn btn-outline-dark col-2">送出</button>
+        </div>
+<!--        <button type="submit" id="repair_detail_btn" onclick="putRepairDetail()" class="btn btn-outline-dark ml-3 col-md-3">送出</button>-->
     </div>
 </form>
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
