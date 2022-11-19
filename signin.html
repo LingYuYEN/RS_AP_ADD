@@ -13,9 +13,9 @@
 <div class="wrapper">
     <header class="text-center p-5 text-white" style="background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
         <h1 class="">屏東縣政府</h1>
-        <h2>鶴聲國小主辦</h2>
-        <h2>110年度補助本縣國中小</h2>
-        <h2>電腦教室資訊設備更新採購案</h2>
+        <h2>110年度及111年度</h2>
+        <h2>本縣國中小電腦教室</h2>
+        <h2>資訊設備更新採購案</h2>
     </header>
 
     <div class="container-fluid mt-5">
@@ -35,6 +35,45 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="classroomManagementGuide">
                         <a class="dropdown-item" href="data/classroomManagementGuide.pdf" download="教室管理使用手冊">教室管理使用手冊</a>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#qaModalLong">
+                    常見問題
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="qaModalLong" tabindex="-1" role="dialog" aria-labelledby="qaModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="qalLongTitle">Q & A</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="questionModal">Q1. 系統進不去出現紅色框框?</p>
+                                <p class="mb-5 answerModal">A: 調整 BIOS Securty boot 關掉。</p>
+                                <p class="questionModal">Q2. 基優派送卡住或是很慢?</p>
+                                <p class="mb-5 answerModal">A: 請檢查 switch 燈號是否有橘燈,橘燈及外線(主線)先拔掉再派送。</p>
+                                <p class="questionModal">Q3. 基優如果派送時接收端都連不到發送端?</p>
+                                <p class="mb-5 answerModal">A: 請檢查交換器封包限制的設定是否有關。</p>
+                                <p class="questionModal">Q4. 老師電腦開機無畫面?</p>
+                                <p class="mb-5 answerModal">A: 請檢查桌面上薄膜式主控台訊號源是否是內置電腦。</p>
+                                <p class="questionModal">Q5. 如何關掉保護模式?</p>
+                                <p class="mb-5 answerModal">A: 電腦重開機到選單，按 Ctrl+O，就會切換到開放模式。</p>
+                                <p class="questionModal">Q6. 如何命令學生機進入網路對拷?</p>
+                                <p class="mb-5 answerModal">A: 由老師端選取要進入對拷的電腦，點選上方的網路對拷 Or 到學生端重開機在選單的時候按 F4。</p>
+                                <p class="questionModal">Q7. 可以遠端設定學生機的 IP 或電腦名稱嗎?</p>
+                                <p class="mb-5 answerModal">A: 老師端管控台選取電腦，點選上方的 IP 設定即可設定電腦名稱、IP 等參數。</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+<!--                                <button type="submit" class="btn btn-primary" ><a class="text-white" href="data/公正案Q_A.pdf" download="公正案Q_A.pdf">下載 PDF</a></button>-->
+                                <button type="submit" class="btn btn-primary" onclick="window.open('data/公正案Q_A.pdf')">下載 PDF</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

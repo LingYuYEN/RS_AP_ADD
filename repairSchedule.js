@@ -145,13 +145,16 @@ function putRepairDetail() {
         url: urlStr,
         type: 'PUT',
         data: json,
+        async: false,
         contentType: "application/json",
         success: function(result) {
             console.log(result)
-            window.location.reload()
         },
-        error: function () {
-            console.log('error')
+        error: function (error) {
+            console.log(error)
+        },
+        done: function () {
+            window.location.reload()
         }
     })
 
