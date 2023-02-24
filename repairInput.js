@@ -121,6 +121,7 @@ function submitOnclick() {
         contentType: "application/json",
         success: function () {
             console.log('success')
+            location.href='repairSearch.html'
         },
         error: function (err) {
             console.log('error: ' + err)
@@ -141,9 +142,10 @@ function updatePassword() {
     let inputPassword = document.getElementById('inputPasswordSelect02').value
     let inputNewPassword = document.getElementById('inputPasswordSelect03').value
 
+    let url = localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + encodeURIComponent(inputPassword) + '&new_password=' + encodeURIComponent(inputNewPassword)
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        url: url,
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {
