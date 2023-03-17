@@ -1,29 +1,3 @@
-// let index = 0
-// function autoLogout() {
-//     if (index === 0) {
-//         alert("系統閒置已 15 分鐘，將自動登出！")
-//         location.href = "signin.html"
-//         index += 1
-//     }
-// }
-// // timeout: 單位ms
-// window.setInterval("autoLogout()", 5000)
-// window.setInterval("autoLogout()", 1000 * 60 * 15)
-
-// document.onkeydown = onKeyDown
-// document.onkeyup = onKeyUp
-// document.onkeypress = function () {
-//     console.log('onKeyPress')
-// }
-//
-// document.onscroll = function () {
-//     console.log('onScroll')
-// }
-//
-// document.onmousemove = function () {
-//     console.log('onMouseMove')
-// }
-
 function inactivityTime () {
     let t;
     // window.onload = resetTimer;
