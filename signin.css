@@ -3,6 +3,13 @@ html,body {
     padding:0;
     height:100%;
 }
+
+header {
+    background-image: url("images/wifi-internet.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
 .wrapper {
     min-height:100%;
     min-width: 900px;
