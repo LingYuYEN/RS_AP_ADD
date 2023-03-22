@@ -18,7 +18,7 @@ function getTag() {
 }
 
 function getRepairInfos(id) {
-    let urlStr = localStorage.getItem('url') + 'repair_infos'
+    let urlStr = localStorage.getItem('url') + 'aa_repair_infos'
     let th_num = 1
 
     $.ajax({
@@ -172,7 +172,7 @@ function updatePassword2() {
 
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
+        url: localStorage.getItem('url') + 'aa_repair_infos/aa_change_password?account=' + inputAccount + '&password=' + inputPassword + '&new_password=' + inputNewPassword,
         dataType: 'json',
         contentType: "application/json",
         success: function (response) {

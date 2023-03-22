@@ -8,7 +8,7 @@ window.onload = function () {
 
 // 選擇鄉鎮市區
 function getTownship() {
-    let urlStr = localStorage.getItem('url') + 'users'
+    let urlStr = localStorage.getItem('url') + 'aa_users'
 
     $.ajax({
         type: 'GET',
@@ -115,7 +115,7 @@ function submitOnclick() {
     let jsonStr = JSON.stringify(postObj)
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'repair_infos',
+        url: localStorage.getItem('url') + 'aa_repair_infos',
         dataType: 'json',
         data: jsonStr,
         contentType: "application/json",
@@ -142,7 +142,7 @@ function updatePassword() {
     let inputPassword = document.getElementById('inputPasswordSelect02').value
     let inputNewPassword = document.getElementById('inputPasswordSelect03').value
 
-    let url = localStorage.getItem('url') + 'repair_infos/change_password?account=' + inputAccount + '&password=' + encodeURIComponent(inputPassword) + '&new_password=' + encodeURIComponent(inputNewPassword)
+    let url = localStorage.getItem('url') + 'aa_repair_infos/aa_change_password?account=' + inputAccount + '&password=' + encodeURIComponent(inputPassword) + '&new_password=' + encodeURIComponent(inputNewPassword)
     $.ajax({
         type: 'POST',
         url: url,

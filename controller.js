@@ -10,7 +10,7 @@ function inactivityTime () {
     //window.onscroll = resetTimer;    // catches scrolling with arrow keys
 
     function logout() {
-        if (window.location.href === "http://103.3.63.116/RepairSystem/repairSearch.html") {
+        if (window.location.href === "http://103.3.63.116/RS_AP_ADD/repairSearch.html") {
             // alert("系統閒置已 15 分鐘，頁面將自動關閉！")
             winClose()
         } else {

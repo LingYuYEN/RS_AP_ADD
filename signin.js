@@ -13,7 +13,6 @@ function signinBtnActive() {
     let account_text_field = document.getElementById('inputAccount').value
     let password_text_field = document.getElementById('inputPassword').value
 
-    // let sign_url = localStorage.getItem('url') + 'login'
     let postObj = {
         'username': account_text_field,
         'password': password_text_field
@@ -22,7 +21,7 @@ function signinBtnActive() {
     let jsonStr = JSON.stringify(postObj)
     $.ajax({
         type: 'POST',
-        url: localStorage.getItem('url') + 'login',
+        url: localStorage.getItem('url') + 'aa_login',
         dataType: 'json',
         data: jsonStr,
         contentType: "application/json",
@@ -33,7 +32,6 @@ function signinBtnActive() {
                 localStorage.setItem('account', data['account'])
                 localStorage.setItem('alias', data['alias'])
                 localStorage.setItem('priority', data['priority'])
-                // window.location.assign('repairInput.html')
                 location.href='repairInput.html'
             }
         },

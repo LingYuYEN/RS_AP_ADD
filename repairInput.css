@@ -5,6 +5,6 @@
     font-size: 25px;
 }
 
-.highlight {
-    background: lightgrey;
+textarea {
+    min-height: 62px;
 }
